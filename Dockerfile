@@ -27,6 +27,9 @@ RUN curl https://dl.google.com/dl/cloudsdk/release/google-cloud-sdk.tar.gz > /tm
  && tar -C /usr/local/gcloud -xvf /tmp/google-cloud-sdk.tar.gz \
  && /usr/local/gcloud/google-cloud-sdk/install.sh
 
+RUN mkdir -p /opt/google-cloud-sdk/bin \
+ && ln -s /usr/local/gcloud/google-cloud-sdk/bin/gcloud /opt/google-cloud-sdk/bin/gcloud
+
 ENV PATH $PATH:/usr/local/gcloud/google-cloud-sdk/bin
 
 CMD ["helm"]
